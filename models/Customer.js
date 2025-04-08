@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose";
 
-const customerSchema = Schema({
+const customerSchema = new Schema({
   name: {
     type: String,
     require: true, //حتما وارد شود

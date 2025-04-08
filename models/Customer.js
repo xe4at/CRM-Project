@@ -1,36 +1,36 @@
 import { Schema, model, models } from "mongoose";
 
-const customerSchema = new Schema({
-  name: {
-    type: String,
-    require: true, //حتما وارد شود
-    minLength: 1,
+const customerSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      minLength: 1,
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+      minLength: 1,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      match: /.+@.+\..+/,
+      trim: true,
+    },
+    phone: { type: String, trim: true },
+    address: { type: String, trim: true },
+    postalCode: Number,
+    date: Date,
+    products: {
+      type: [String],
+      default: [],
+    },
   },
-  lastName: {
-    type: String,
-    require: true,
-    minLength: 1,
-  },
-  email: {
-    type: String,
-    require: true,
-    minLength: 1,
-  },
-  phone: String,
-  address: String,
-  postalCode: Number,
-  data: Date,
-  products: {
-    type: Array,
-    default: [],
-  },
-  createdAt: {
-    type: Date,
-    default: () => Date.now(),
-    immutable: true, //قابل تغییر نباشد
-  },
-  updatedAt: { type: Date, default: () => Date.now() },
-});
+  { timestamps: true }
+);
 
 const Customer = models.Customer || model("Customer", customerSchema);
 

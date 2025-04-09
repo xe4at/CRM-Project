@@ -13,7 +13,8 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     try {
-      const data = req.body.data; // نیازی به `.data` نیست، مگر اینکه از کلاینت `{ data: {...} }` ارسال کنید
+      const data = req.body.data;
+      console.log(data);
 
       if (!data.name || !data.lastName || !data.email) {
         return res

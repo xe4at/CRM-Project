@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Form from "../module/Form";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 function AddCustomerPage() {
   const [form, setForm] = useState({
@@ -13,9 +15,36 @@ function AddCustomerPage() {
     products: [],
   });
 
-  const saveHandler = () => {};
+  const router = useRouter();
 
-  const cancelHandler = () => {};
+  const saveHandler = async () => {
+    const res = await fetch("/api/customer", {
+      method: "POST",
+      body: JSON.stringify({ data: form }),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status === "success") {
+      router.push("/");
+    } else {
+      toast.error("You encountered an error.");
+    }
+  };
+
+  const cancelHandler = () => {
+    setForm({
+      name: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      address: "",
+      postalCode: "",
+      date: "",
+      products: [],
+    });
+    router.push("/");
+  };
 
   return (
     <div className="customer-page">

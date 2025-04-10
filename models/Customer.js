@@ -25,7 +25,7 @@ const customerSchema = new Schema(
     postalCode: Number,
     date: Date,
     products: {
-      type: [String],
+      type: Array,
       default: [],
     },
   },

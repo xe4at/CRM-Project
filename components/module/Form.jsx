@@ -59,6 +59,7 @@ function Form({ form, setForm }) {
         onChange={changeHandler}
       />
       <ItemList form={form} setForm={setForm} />
+
     </div>
   );
 }

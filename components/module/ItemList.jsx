@@ -3,11 +3,12 @@ import FormInput from "./FormInput";
 function ItemList({ form, setForm }) {
   const { products } = form;
 
-  const addHandler = () => {
+  const addHnadler = () => {
     setForm({
       ...form,
       products: [...products, { name: "", price: "", qty: "" }],
     });
+    console.log(products);
   };
 
   const changeHandler = (e, index) => {
@@ -34,7 +35,7 @@ function ItemList({ form, setForm }) {
           deleteHandler={() => deleteHandler(index)}
         />
       ))}
-      <button onClick={addHandler}> Add Items</button>
+      <button onClick={addHnadler}>Add Item</button>
     </div>
   );
 }
@@ -46,7 +47,7 @@ function ProductItem({ product, changeHandler, deleteHandler }) {
     <div className="form-input__list">
       <FormInput
         name="name"
-        label="product Name"
+        label="Product Name"
         type="text"
         value={product.name}
         onChange={changeHandler}
@@ -59,7 +60,6 @@ function ProductItem({ product, changeHandler, deleteHandler }) {
           value={product.price}
           onChange={changeHandler}
         />
-
         <FormInput
           name="qty"
           label="Qty"

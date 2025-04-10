@@ -13,8 +13,7 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     try {
-      const data = req.body.data;
-      console.log(data);
+      const data = req.body.data; 
 
       if (!data.name || !data.lastName || !data.email) {
         return res

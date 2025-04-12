@@ -3,7 +3,7 @@ import Customer from "../../models/Customer";
 import connectDB from "../../utils/ConnectDb";
 
 function Index({ customers }) {
-  console.log(customers);
+  // console.log(customers);
   return <HomePage customers={customers} />;
 }
 

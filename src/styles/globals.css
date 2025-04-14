@@ -1,15 +1,16 @@
 :root {
-  --bg-dark: #0d0d0d;
-  --bg-darker: #1c1c1c;
-  --card-bg: linear-gradient(to right, #262836, #1f2230);
-  --primary-gradient: linear-gradient(to right, #8af1aa, #57aac8);
-  --text-light: #d9fefb;
-  --accent-green: #8af1aa;
-  --accent-blue: #57aac8;
-  --accent-red: #f0394b;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-  --border-radius: 0.75rem;
+  --bg-dark: #0f172a;
+  --bg-darker: #1e293b;
+  --card-bg: linear-gradient(145deg, #1e293b, #0f172a);
+  --primary-gradient: linear-gradient(135deg, #3b82f6, #10b981);
+  --text-light: #f8fafc;
+  --accent-green: #10b981;
+  --accent-blue: #3b82f6;
+  --accent-red: #ef4444;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius: 1rem;
   --mobile-padding: 12px;
 }
 
@@ -27,11 +28,7 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  background: linear-gradient(
-    to bottom right,
-    var(--bg-dark),
-    var(--bg-darker)
-  );
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker));
   min-height: 100vh;
   max-width: 1200px;
   margin: 0 auto;
@@ -72,28 +69,24 @@ p {
   align-items: center;
   margin: 1.5rem 0 2.5rem;
   position: relative;
+  padding: 1rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
 }
 
-.header::after {
-  content: "";
-  position: absolute;
-  bottom: -1rem;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--accent-green),
-    transparent
-  );
+.header h2 {
+  color: var(--accent-blue);
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header a {
   background: var(--primary-gradient);
-  color: #0f1c26;
+  color: white;
   padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius);
+  border-radius: 0.5rem;
   font-weight: 600;
   box-shadow: var(--shadow);
   transition: var(--transition);
@@ -103,7 +96,7 @@ p {
 
 .header a:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(138, 241, 170, 0.2);
+  box-shadow: var(--shadow-hover);
 }
 
 .main {
@@ -133,20 +126,22 @@ p {
 /* Card Components */
 .card {
   background: var(--card-bg);
-  color: var(--accent-green);
+  color: var(--text-light);
   margin: 1rem 0;
-  padding: 1.25rem;
+  padding: 1.5rem;
   border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   gap: 1rem;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 16px rgba(138, 241, 170, 0.15);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .card__details {
@@ -342,10 +337,11 @@ p {
 .customer-detail__products,
 .customer-detail__buttons {
   background: var(--card-bg);
-  padding: 1.25rem;
+  padding: 1.5rem;
   border-radius: var(--border-radius);
   margin-top: 2rem;
   box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .customer-detail__main {
@@ -357,25 +353,64 @@ p {
 .customer-detail__item {
   display: flex;
   flex-direction: column;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  background: rgba(31, 34, 48, 0.5);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  transition: var(--transition);
+}
+
+.customer-detail__item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(5px);
 }
 
 .customer-detail__item span {
   color: var(--accent-blue);
-  font-weight: 500;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .customer-detail__products {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-top: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.customer-detail__products p {
+.customer-detail__products p:first-child,
+.customer-detail__products p:nth-child(2),
+.customer-detail__products p:nth-child(3) {
   color: var(--accent-blue);
+  font-weight: 600;
   margin-bottom: 1rem;
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.customer-detail__products p:not(:first-child):not(:nth-child(2)):not(:nth-child(3)),
+.customer-detail__products span {
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.75rem;
+  margin: 0;
+  transition: var(--transition);
+}
+
+.customer-detail__products p:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):hover,
+.customer-detail__products span:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
 }
 
 .customer-detail__buttons {

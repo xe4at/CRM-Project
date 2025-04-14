@@ -373,9 +373,9 @@ p {
 .customer-detail__products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
   background: var(--card-bg);
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: var(--border-radius);
   margin-top: 2rem;
   box-shadow: var(--shadow);
@@ -387,24 +387,29 @@ p {
 .customer-detail__products p:nth-child(3) {
   color: var(--accent-blue);
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-align: center;
-  padding: 0.75rem;
+  padding: 1rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 0.75rem;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.5px;
+  grid-column: span 1;
 }
 
 .customer-detail__products p:not(:first-child):not(:nth-child(2)):not(:nth-child(3)),
 .customer-detail__products span {
   text-align: center;
-  padding: 0.75rem;
+  padding: 1rem;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 0.75rem;
   margin: 0;
   transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
 }
 
 .customer-detail__products p:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):hover,
@@ -416,22 +421,37 @@ p {
 .customer-detail__buttons {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-top: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.customer-detail__buttons p {
+  color: var(--accent-blue);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
 .customer-detail__buttons button,
 .customer-detail__buttons a {
-  border-radius: 0.5rem;
-  padding: 0.75rem;
+  border-radius: 0.75rem;
+  padding: 1rem;
   font-size: 1rem;
   width: 100%;
   transition: var(--transition);
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .customer-detail__buttons button {
-  border: 1px solid var(--accent-red);
+  border: 2px solid var(--accent-red);
   color: var(--accent-red);
   background-color: transparent;
 }
@@ -439,10 +459,12 @@ p {
 .customer-detail__buttons button:hover {
   background-color: var(--accent-red);
   color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 .customer-detail__buttons a {
-  border: 1px solid var(--accent-green);
+  border: 2px solid var(--accent-green);
   color: var(--accent-green);
   background-color: transparent;
 }
@@ -450,6 +472,8 @@ p {
 .customer-detail__buttons a:hover {
   background-color: var(--accent-green);
   color: #0f1c26;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 /* Animations */
@@ -538,7 +562,43 @@ p {
   }
   
   .customer-detail__products {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2.5rem;
+  }
+
+  .customer-detail__products p:first-child,
+  .customer-detail__products p:nth-child(2),
+  .customer-detail__products p:nth-child(3) {
+    font-size: 1.1rem;
+    padding: 1.25rem;
+  }
+
+  .customer-detail__products p:not(:first-child):not(:nth-child(2)):not(:nth-child(3)),
+  .customer-detail__products span {
+    padding: 1.25rem;
+    min-height: 70px;
+  }
+
+  .customer-detail__buttons {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .customer-detail__buttons p {
+    margin-bottom: 0;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .customer-detail__buttons button,
+  .customer-detail__buttons a {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    max-width: 200px;
   }
 }
 
@@ -554,5 +614,42 @@ p {
   .card__buttons button,
   .card__buttons a {
     padding: 0.6rem 1.2rem;
+  }
+  
+  .customer-detail__products {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    gap: 2.5rem;
+    padding: 3rem;
+  }
+
+  .customer-detail__products p:first-child,
+  .customer-detail__products p:nth-child(2),
+  .customer-detail__products p:nth-child(3) {
+    font-size: 1.2rem;
+    padding: 1.5rem;
+  }
+
+  .customer-detail__products p:not(:first-child):not(:nth-child(2)):not(:nth-child(3)),
+  .customer-detail__products span {
+    padding: 1.5rem;
+    min-height: 80px;
+    font-size: 1.1rem;
+  }
+
+  .customer-detail__buttons {
+    padding: 2.5rem;
+    gap: 2.5rem;
+  }
+
+  .customer-detail__buttons p {
+    font-size: 1.2rem;
+    margin-right: 1.5rem;
+  }
+
+  .customer-detail__buttons button,
+  .customer-detail__buttons a {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.2rem;
+    max-width: 250px;
   }
 }

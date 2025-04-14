@@ -59,7 +59,6 @@ function CustomerDetailsPage({ data }) {
         ))}
       </div>
       <div className="customer-detail__buttons">
-        <p>Edit or Delete?</p>
         <button onClick={deleteHandler}>Delete</button>
         <Link href={`/edit/${data._id}`}>Edit</Link>
       </div>
